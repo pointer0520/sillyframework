@@ -9,6 +9,13 @@ import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 
 public class ClassPathUtils {
+    /**
+     * 泛型方法：用于安全地读取 classpath 中的资源文件并通过回调函数处理
+     * 1.路径处理：去掉开头的 "/"
+     * 2.读取资源：通过类加载器从 classpath 获取输入流
+     * 3.异常处理：文件不存在时抛出 FileNotFoundException，IO 错误时包装为 UncheckedIOException
+     * 4.回调执行：将输入流传递给 InputStreamCallback 接口处理并返回结果
+     */
     public static <T> T readInputStream(String path, InputStreamCallback<T> inputStreamCallback) {
         if (path.startsWith("/")) {
             path = path.substring(1);

@@ -1,0 +1,8 @@
+app:
+  title: SillyFramework
+  description: SillyFramework
+  version: 1.0.0
+
+
+server:
+  name: good
